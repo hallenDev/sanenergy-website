@@ -1,0 +1,181 @@
+.structure-img {
+  width: 85%;
+  height: auto;
+}
+
+.rune-reward-info {
+  border: 2px solid #F3C81C;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin: 1rem 2.5rem;
+  width: 25%;
+  min-width: 16rem;
+  height: inherit;
+  /* min-height: 12rem; */
+}
+
+.myrunes-img {
+  width: 2rem;
+  height: auto;
+}
+
+.runes-img {
+  width: 1.5rem;
+  height: auto;
+}
+
+.dapp-world-map-bg {
+  background-color: rgb(255, 210, 27, 0.2);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.dapp-world-map {
+  background-image: url(./world_map.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 2.5rem 1rem 1rem 1rem;
+}
+
+.dapp-rune-field {
+  position: relative;
+  background-color: rgb(0, 0, 0, 0.8);
+  border-radius: 5px;
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.dapp-rune-field:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px #F3C81C,0px 0px 10px #F3C81C, 0px 0px 15px #F3C81C;
+}
+
+.rune-selected {
+  box-shadow: 0px 0px 5px #F3C81C,0px 0px 10px #F3C81C, 0px 0px 15px #F3C81C;
+}
+
+.dapp-rune-field:hover .dapp-rune-img {
+  /* transform: rotate(360deg); */
+  /* -webkit-transform: rotate(360deg); */
+  /* transition: transform 2.5s ease-in-out; */
+  /* -webkit-transition: transform 2.5s ease-in-out; */
+}
+
+.dapp-rune-info {
+  width: 25%;
+  min-width: 15.5rem;
+  max-width: 20rem;
+  margin: 1rem;
+  padding: 0 2rem;
+}
+
+.dapp-rune-img {
+  width: 100%;
+  height: auto;
+}
+
+.dapp-btn {
+  background: transparent;
+  border-radius: 5px;
+  border: 2px solid #F3C81C;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 1.5rem;
+}
+
+.dapp-btn:hover {
+  color: #F3C81C;
+}
+
+.dapp-btn:focus {
+  box-shadow: none!important;
+}
+
+.rune-name {
+  background-color: transparent;
+  color: #F3C81C;
+  border: 2px solid #F3C81C;
+  /* border-left: none;
+  border-right: none;
+  border-top: none; */
+  border-radius: 5px;
+  text-align: center;
+  padding: 0.2rem 0.5rem;
+}
+
+.rune-name:focus {
+  outline: none;
+}
+
+.reward-history-field {
+  border: 2px solid #F3C81C;
+  border-radius: 1.5rem;
+  background-color: #020D2F;
+  height: 20rem;
+}
+
+.underline {
+  border-bottom: 2px solid white;
+  height: 3rem;
+}
+
+.no-data-field {
+  height: 17rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-field {
+  padding: 0.2rem 0;
+  overflow: auto;
+  height: 16.2rem;
+}
+
+.rpc:hover {
+  cursor: pointer;
+  color: #F3C81C;
+}
+
+.form-check-input:checked {
+  background-color: #F3C81C!important;
+  box-shadow: none!important;
+  border-color: #F3C81C!important;
+}
+
+.form-check-input:focus {
+  box-shadow: none!important;
+  border-color: #F3C81C!important;
+}
+
+.form-check:hover {
+  cursor: pointer!important;
+}
+
+.form-check:hover .form-check-input {
+  cursor: pointer!important;
+  border-color: #F3C81C!important;
+}
+
+.form-check:hover label {
+  color:#F3C81C!important;
+  cursor: pointer!important;
+}
+
+.btn:focus {
+  box-shadow: none!important;
+}
+
+.token-price {
+  background-color: rgba(43, 47, 58, 0.2);
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}

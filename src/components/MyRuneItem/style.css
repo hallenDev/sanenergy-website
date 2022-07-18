@@ -1,0 +1,9 @@
+.rune-item {
+  padding: 0.3rem 0;
+}
+
+.rune-item:hover {
+  cursor: pointer;
+  border-radius: 0.55rem;
+  background-color: #010718;
+}

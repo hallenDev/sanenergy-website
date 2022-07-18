@@ -1,0 +1,10 @@
+.loading {
+  position: relative;
+  background: rgb(5, 15, 36);
+  background: linear-gradient(to bottom right, rgba(5, 15, 36, 1) 45%, rgb(2, 44, 33, 1) 75%, rgb(4, 72, 54, 1) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}

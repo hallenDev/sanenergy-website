@@ -1,0 +1,55 @@
+.brand-logo {
+  height: 5rem;
+  width: auto;
+}
+
+.header-item span {
+  color: white;
+}
+
+.header-item:hover {
+  border-bottom: 2px solid #F3C81C;
+  border-radius: 40%;
+  transition: border-radius 0.3s ease-in-out;
+  -webkit-transition: border-radius 0.3s ease-in-out;
+}
+
+.header-item:hover span {
+  color: #F3C81C;
+  transition: color 0.3s ease-in-out;
+  -webkit-transition: color 0.3s ease-in-out;
+}
+
+#navbar-toggle-btn {
+  color: white;
+}
+
+.navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* height: 6.5rem; */
+}
+
+.launch-btn {
+  background: transparent;
+  border-radius: 5px;
+  border: 2px solid #F3C81C;
+  color: white;
+  height: 2.5rem;
+}
+
+.launch-btn:hover {
+  color: #F3C81C;
+}
+
+.launch-btn:focus {
+  box-shadow: none!important;
+}
+
+/* #basic-navbar-nav {
+  background-color: #0C1528;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 1rem 0.5rem;
+} */

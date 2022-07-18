@@ -1,0 +1,35 @@
+.footer-bar {
+  width: 100%;
+  height: 10px;
+}
+
+.join-community {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4.5rem 0;
+}
+
+.community-box {
+  border: 3px solid #D68A4E;
+  border-radius: 5px;
+  background-color:rgb(104, 37, 38, 0.2);
+  padding: 1rem 1.8rem;
+}
+
+.community-link {
+  position: absolute;
+  bottom: 1.8rem;
+}
+
+.link-item:hover {
+  cursor: pointer;
+  color: #D68A4E;
+  transition: color 0.3s ease-in-out;
+  -webkit-transition: color 0.3s ease-in-out;
+}
+
+.footer-bottom {
+  padding: 1.2rem 0;
+}

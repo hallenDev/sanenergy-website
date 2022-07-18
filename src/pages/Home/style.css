@@ -1,0 +1,123 @@
+/* .gradient-bg {
+  background-image: url(./bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+#about {
+  margin-top: 5rem;
+}
+
+.about-cards {
+  margin-top: 5rem;
+}
+
+.big-logo {
+  width: 100%;
+  /* max-width: 1000px; */
+  min-width: 175px;
+  height: auto;
+}
+
+.how-works {
+  color: #F3C81C;
+  font-weight: bold;
+}
+
+.next-arrow {
+  height: 14px;
+  width: auto;
+}
+
+.rune-box {
+  background-color: rgba(43, 47, 58, 0.2);
+  border-radius: 1.5rem;
+  padding: 1rem 1.8rem;
+  width: 65%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (max-width: 1200px) {
+  .rune-box {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .rune-box {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .rune-box {
+    width: 100%;
+  }
+}
+
+#roadmap {
+  background-color: rgba(43, 47, 58, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding-top: 2.5rem;
+}
+
+.roadmap-text {
+  width: 7%;
+  border-right: 3px solid #FFD21B;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roadmap-text-img {
+  width: 50%;
+  min-width: 1.2rem;
+  height: auto;
+}
+
+.roadmap {
+  width: 93%;
+  padding: 0.5rem;
+}
+
+.roadmap-img {
+  width: 100%;
+  height: auto;
+}
+
+.play-games {
+  display: flex;
+  align-items: center;
+}
+
+.play-games-img {
+  width: 50%;
+}
+
+.games-img {
+  right: 0;
+  width: 55%;
+}
+
+.ring-filed:hover {
+  outline: 2px solid #FFD21B;
+}
+
+.ring-img {
+  height: 5rem;
+  width: auto;
+  margin-top: 2rem;
+}
+
+.info-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgba(43, 47, 58, 0.2);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+

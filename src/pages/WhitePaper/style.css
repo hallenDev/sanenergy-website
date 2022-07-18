@@ -1,0 +1,55 @@
+.whitepaper {
+  margin-top: 5rem;
+}
+
+.world-map-bg {
+  background-color: rgb(255, 210, 27, 0.2);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.world-map {
+  background-image: url(./world_map.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.agamotto-gif {
+  width: 100%;
+  min-width: 150px;
+  height: auto;
+}
+
+.text-input {
+  background-color: white;
+  padding: 0.5rem 1rem;
+  display: block;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+  color: #F3C81C;
+  border: none;
+}
+
+.text-input:focus {
+  outline: 2px solid #F3C81C!important;
+  transition: outline 0.15s ease;
+}
+
+.download-btn {
+  background: transparent;
+  border-radius: 5px;
+  border: 2px solid #F3C81C;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-btn:hover {
+  color: #F3C81C;
+}
+
+.download-btn:focus {
+  box-shadow: none!important;
+}

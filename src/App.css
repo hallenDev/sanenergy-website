@@ -1,0 +1,60 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+ /* Custom scrollbar */
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #F3C81C;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c09e17;
+  }
+
+.app {
+  position: relative;
+  background: rgb(5, 15, 36);
+  background: linear-gradient(to bottom right, rgb(39 99 225) 45%, rgb(19 105 211) 75%, rgb(87 139 233) 100%);
+  color: white;
+  min-height: 100vh;
+}
+
+.cl-brown {
+  color: #F3C81C;
+}
+
+.cl-green {
+  color: #5AFE6C;
+}
+
+.cl-orange {
+  color: #F0951D;
+}
+
+.cl-blue {
+  color: #2ae8f5;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
