@@ -14,7 +14,7 @@ const WhitePaper = () => {
             <div className="world-map">
               <div className="row align-items-center m-0">
                 <div className="col-sm-6">
-                  <img src="assets/agamotto.gif" alt="agamotto" className='agamotto-gif' />
+                  <img src="assets/agamotto.png" alt="agamotto" width="400" height="400" />
                 </div>
 
                 <div className="col-sm-6 d-flex justify-content-center">

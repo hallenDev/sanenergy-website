@@ -31,6 +31,16 @@
   border: none;
 }
 
+.text-input-presale {
+  background-color: white;
+  padding: 0.5rem 1rem;
+  display: block;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  color: black;
+  border: none;
+}
+
 .text-input:focus {
   outline: 2px solid #F3C81C!important;
   transition: outline 0.15s ease;

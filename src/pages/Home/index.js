@@ -9,29 +9,29 @@ const Home = () => {
     {
       name1: "WIND",
       name2: "Wind",
-      name3: "white",
+      name3: "wind",
       rewards: 0.05,
       tokens: 5,
       img_url: "assets/white_rune.png",
-      img_alt: "white_rune"
+      img_alt: "wind_generator"
     },
     {
       name1: "SOLAR",
       name2: "Solar",
-      name3: "orange",
+      name3: "solar",
       rewards: 0.35,
       tokens: 30,
       img_url: "assets/orange_rune.png",
-      img_alt: "orange_rune"
+      img_alt: "solar_generator"
     },
     {
       name1: "TIDAL POWER",
       name2: "Tidal power",
-      name3: "green",
+      name3: "tidal",
       rewards: 1.25,
       tokens: 100,
       img_url: "assets/green_rune.png",
-      img_alt: "green_rune"
+      img_alt: "tidal_generator"
     },
   ]
 
@@ -41,6 +41,10 @@ const Home = () => {
 
   const openDApp = () => {
     window.open("/app", "_self");
+  }
+
+  const buyTokens = async () => {
+    console.log("OK");
   }
 
   return (
@@ -92,6 +96,38 @@ const Home = () => {
                 <p>The community members will decide by vote where proceeds will be invested in  from P2E games and the Gas fees .  Upon completion of the vote by the community, the proceeds will be invested in profitable crypto trends i.e NFTs, Metaverse, Privacy tokens, Defi, DAOs  and so on.  As long as they are profitable our highly skilled market analysts will Identify them and present them to the community to decide on whether to invest or not.</p>
               </div> */}
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='container text-center' id='tokenomics'>
+        <p className='how-works fs-2 mt-5'>Tokenomics</p>
+
+        <div className="d-flex justify-content-center mt-5">
+          <div className="rune-box">
+            <img src="assets/agamotto.png" alt="logo" width="70" height="70" />
+            <p className='mb-0 mt-2 fw-bold fs-5'>total supply: 10,000,000,000 <span className='cl-brown fw-bold'>$SAN</span></p>
+            <p className='mb-0 mt-2 fw-bold fs-5'><span className='cl-green fw-bold'>Buy</span>/<span className='cl-red fw-bold'>Sell</span> Tax Fee: 10% </p>
+            <p className='mb-0 mt-2 fw-bold fs-6 text-left'>2%: reflection to holders</p>
+            <p className='mb-0 mt-2 fw-bold fs-6'>2%: charity/business</p>
+            <p className='mb-0 mt-2 fw-bold fs-6'>2%: developers</p>
+            <p className='mb-0 mt-2 fw-bold fs-6'>4%: liquidity</p>
+          </div>
+        </div>
+      </div>
+
+      <div className='container text-center' id='presale'>
+        <p className='how-works fs-2 mt-5'>Presale</p>
+        <div className="d-flex justify-content-center mt-5">
+          <div className="rune-box">
+            <p className='mb-0 mt-2 fw-bold fs-6'>1 BNB = 3300 <span className='cl-brown fw-bold'>$SAN</span></p>
+            <p className='mb-0 mt-2 fw-bold fs-6'>Max limit per transaction: 4 BNB</p>
+            <p className='mb-0 mt-2 fw-bold fs-7'>your balance: 1.3 BNB</p>
+            <div Style={'display:flex; justify-content:center'}>
+              <input type="text" className='text-input-presale' placeholder='input your value' />
+            </div>
+            <p>You will receive <span className='cl-brown fw-bold'>3300 $SAN</span></p>
+            <button type='button' className='btn launch-btn fw-bold' onClick={buyTokens}>Buy <span className='cl-brown fw-bold'>$SAN</span></button>
           </div>
         </div>
       </div>
