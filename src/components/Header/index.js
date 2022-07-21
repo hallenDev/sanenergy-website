@@ -61,7 +61,7 @@ const Header = () => {
               <Nav.Link href='/#playgames' className='header-item m-0 px-3'>
                 <span className='fw-bold'>PlayGames</span>
               </Nav.Link>
-              <Nav.Link as={NavLink} to='/whitepaper' className='header-item m-0 px-3'>
+              <Nav.Link className='header-item m-0 px-3' href='https://drive.google.com/file/d/1gTDP4xVq-v_D7Vq2JVEqWrJhn7uG0lOR/view' target="_blank" rel="noopener noreferrer">
                 <span className='fw-bold'>Whitepaper</span>
               </Nav.Link>
               <Link to="/app">

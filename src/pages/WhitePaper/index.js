@@ -1,11 +1,14 @@
 import React from 'react';
 import { FaDownload } from 'react-icons/fa';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 import './style.css'
 
 const WhitePaper = () => {
   return (
     <React.Fragment>
+      <Header />
       <div className="whitepaper">
         <p className='container fw-bold fs-2 cl-brown'>Download Whitepaper</p>
 
@@ -30,6 +33,7 @@ const WhitePaper = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </React.Fragment>
   );
 }

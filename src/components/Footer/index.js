@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaDiscord, FaTwitter } from 'react-icons/fa';
+import { FaDiscord, FaTelegram, FaTwitter } from 'react-icons/fa';
 
 import './style.css'
 
@@ -19,14 +19,15 @@ const Footer = () => {
 
         <div className="container community-link">
           <div className="d-flex justify-content-center">
-            <FaDiscord className='mx-4 fs-3 link-item' />
-            <FaTwitter className='mx-4 fs-3 link-item' />
+            <a href='https://discord.gg/Y8a29PjsPT' style = {{color: 'white'}} target="_blank" rel="noopener noreferrer"><FaDiscord className='mx-4 fs-3 link-item' /></a>
+            <a href='https://t.me/SanEnergyToken' style = {{color: 'white'}} target="_blank" rel="noopener noreferrer"><FaTelegram className='mx-4 fs-3 link-item' /></a>
+            <a href='https://twitter.com/sanenergys/status/1549892591776370690?s=21&t=sbM-IstI3O1ngUI_4hrvIw' style = {{color: 'white'}} target="_blank" rel="noopener noreferrer"><FaTwitter className='mx-4 fs-3 link-item' /></a>
           </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p className='m-0 text-center fs-6 fw-normal'>Copyright &copy; {new Date().getFullYear()} SANENERGY SOLUTION All rights Reserved</p>
+        <p className='m-0 text-center fs-6 fw-normal'>Copyright &copy; {new Date().getFullYear()} Sanenergy finance All rights Reserved</p>
       </div>
     </React.Fragment>
   );

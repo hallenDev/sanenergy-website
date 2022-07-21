@@ -18,6 +18,8 @@ import { tokenAddr, whiteRuneAddr, orangeRuneAddr, greenRuneAddr, AVAXUSDTLP, AV
 import MyRuneItem from '../../components/MyRuneItem';
 
 import isEmpty from '../../utils/is-empty';
+import Footer from '../../components/Footer';
+import DAppHeader from '../../components/DAppHeader';
 
 const DApp = () => {
   const { library, account } = useWeb3React();
@@ -384,6 +386,7 @@ const DApp = () => {
 
   return (
     <React.Fragment>
+      <DAppHeader />
       {/* <DAppHeader /> */}
       {/* Welcome */}
       <div className="container mt-5">
@@ -628,6 +631,7 @@ const DApp = () => {
 
         </div>
       </div>
+      <Footer />
     </React.Fragment>
   );
 }

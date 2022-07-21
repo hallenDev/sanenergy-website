@@ -1,10 +1,107 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './style.css'
 
 import RuneItem from '../../components/RuneItem';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import { IoIosWallet, IoMdReturnLeft } from 'react-icons/io';
+import { useWeb3React } from "@web3-react/core";
+import { toast } from 'react-toastify';
+import Web3 from 'web3';
+
+import { injected } from "../../constants/WalletConnectors";
+import { presaleAddress } from '../../constants/Addresses';
+
+import presaleABI from '../../constants/ABI/presale.json';
+
+const ETHUnit = 1e18;
+const sanPerBnb = 3300;
 
 const Home = () => {
+  
+  const { activate, account, library } = useWeb3React();
+
+  const [bnbBalance, setBnbBalance] = useState(0);
+  const [updated, setUpdate] = useState("");
+
+  const [buyBalance, setBuyBalance] = useState("");
+  const [sanBalance, setSanBalance] = useState(0);
+  const [isValidValue, setIsValidValue] = useState(false);
+
+  const checkIsValidNumber = (_buyBalance) => {
+    if(_buyBalance == '') return false;
+    if(isNaN(_buyBalance)) return false;
+    if(parseFloat(_buyBalance) > parseFloat(4)) return false;
+    return true;
+  }
+
+  useEffect(() => {
+    if(account && library) {
+      library.eth.getBalance(account)
+      .then((res) => {
+        setBnbBalance(res);
+      })
+    }
+  }, [account, updated]);
+
+  useEffect(() => {
+    if(checkIsValidNumber(buyBalance)) {
+      setIsValidValue(true);
+      setSanBalance(parseInt(parseFloat(buyBalance) * sanPerBnb));
+    } else {
+      setIsValidValue(false);
+      setSanBalance(0);
+    }
+  }, [buyBalance])
+
+  const connectMetaMask = async () => {
+    if (window.ethereum === undefined) {
+      toast.error("Please install Metamask on your browser.");
+      return;
+    }
+
+    const web3 = new Web3(window.ethereum);
+    const chainId = await web3.eth.getChainId();
+    // console.log({ chainId: chainId })
+
+    if (chainId !== 97) {
+      try {
+        await web3.currentProvider.request({
+          method: 'wallet_switchEthereumChain',
+            params: [{ chainId: Web3.utils.toHex(97) }],
+          });
+      } catch (switchError) {
+        // This error code indicates that the chain has not been added to MetaMask.
+        if (switchError.code === 4902) {
+          web3.currentProvider.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainId: '0x61',
+              chainName: 'Binance Smart Chain Test net',
+              nativeCurrency: {
+                name: 'Binance Coin',
+                symbol: 'BNB',
+                decimals: 18
+              },
+              rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
+              blockExplorerUrls: ['https://testnet.bscscan.com']
+            }]
+          })
+          .catch((error) => {
+            console.log(error)
+          }) 
+        }
+      }
+    }
+
+    try {
+      await activate(injected);
+    } catch (ex) {
+      console.log(ex)
+    }
+  }
+
   const rune_info = [
     {
       name1: "WIND",
@@ -44,11 +141,35 @@ const Home = () => {
   }
 
   const buyTokens = async () => {
-    console.log("OK");
+    if(!isValidValue) {
+      toast.error("Invalid balance");
+      return;
+    }
+    if(parseFloat(bnbBalance) > bnbBalance) {
+      toast.error("Insufficient BNB balance");
+      return;
+    }
+    if(!library) {
+      toast.error("Connect your metamask.");
+      return;
+    }
+    if(library) {
+      const presaleContract = new library.eth.Contract(presaleABI, presaleAddress);
+      presaleContract.methods.buyToken().send({from:account, value: parseFloat(buyBalance) * ETHUnit}).then((res) => {
+        if(res.status == true) {
+          toast.success("You received " + sanBalance + " $SAN");
+          setUpdate(new Date());
+          setBuyBalance(0);
+        } else {
+          toast.error("Buy error!");
+        }
+      })
+    }
   }
 
   return (
     <React.Fragment>
+      <Header />
       {/* <Header /> */}
       {/* About */}
       <div className="container" id='about'>
@@ -57,13 +178,13 @@ const Home = () => {
             <div style={{ height: '100%' }}>
               <div>
                 <p className='fs-2 fw-bold'>Discover <span className='cl-brown'>Endless</span> Possibilities</p>
-                <p>SANENERGY SOLUTION is a Crypto organization that provides a combination of staking services, and P2E games.  We are also interested in investments in the crypto community. </p>
+                <p>Sanenergy finance is a Crypto organization that provides a combination of staking services, and P2E games.  We are also interested in investments in the crypto community. </p>
 
                 <button type='button' className='btn launch-btn fw-bold mt-5' onClick={openDApp}>Launch App</button>
               </div>
 
-              <div>
-                <img src="assets/agamotto.png" alt="logo" width="450" height="450" />
+              <div Style={'display:flex; justify-content:center'}>
+                <img src="assets/agamotto.png" alt="logo" width="70%" height="70%" />
               </div>
             </div>
           </div>
@@ -120,14 +241,24 @@ const Home = () => {
         <p className='how-works fs-2 mt-5'>Presale</p>
         <div className="d-flex justify-content-center mt-5">
           <div className="rune-box">
-            <p className='mb-0 mt-2 fw-bold fs-6'>1 BNB = 3300 <span className='cl-brown fw-bold'>$SAN</span></p>
+            <p className='mb-0 mt-2 fw-bold fs-6'>1 BNB = 3300 <span className='cl-brown fw-bold'>$SAN</span>, no Tax Fee</p>
             <p className='mb-0 mt-2 fw-bold fs-6'>Max limit per transaction: 4 BNB</p>
-            <p className='mb-0 mt-2 fw-bold fs-7'>your balance: 1.3 BNB</p>
+            <p className='mb-0 mt-2 fw-bold fs-7'>your balance: {parseFloat(parseFloat(bnbBalance)/ETHUnit).toFixed(2)} BNB</p>
             <div Style={'display:flex; justify-content:center'}>
-              <input type="text" className='text-input-presale' placeholder='input your value' />
+              <input type="text" className='text-input-presale' placeholder='input balance' value = {buyBalance} onChange={(e) => {
+                setBuyBalance(e.target.value);
+              }}/>
             </div>
-            <p>You will receive <span className='cl-brown fw-bold'>3300 $SAN</span></p>
-            <button type='button' className='btn launch-btn fw-bold' onClick={buyTokens}>Buy <span className='cl-brown fw-bold'>$SAN</span></button>
+            <p>You will receive <span className='cl-brown fw-bold'>{sanBalance} $SAN</span></p>
+            {account? (
+              <button type='button' className='btn launch-btn fw-bold' onClick={buyTokens}>Buy <span className='cl-brown fw-bold'>$SAN</span></button>  
+            ) : (
+              <button type='button' className='btn connect-btn fw-bold' onClick={connectMetaMask}>
+                  <IoIosWallet />
+                  <span className='ms-1'>Connect</span>
+                </button>
+            )}
+            
           </div>
         </div>
       </div>
@@ -186,43 +317,46 @@ const Home = () => {
                     - Presale launch<br/>
                     - Social Media Marketing Campaign<br/>
                     - Influencer Support Marketing<br/>
-                    - Coin Market Cap (CMC) and Coin Gecko (CG) Listings<br/>
-                    - Charity Development Partnership<br/>
-                    - Financial App Launch<br/>
-                    - Meetings between executives and contractors<br/>
-                    - Meetings between investors, traders, marketers, and developers<br/>
-                    - Potential investment destinations include P2E games, NFTs, Metaverse, clean energy suppliers and generators, DAOs, and so on.
+                    - Coin Market Cap & Coin Gecko Listings<br/>
+                    - Charity Partnership<br/>
+                    - App Launch<br/>
+                    - Executives- contractors- investors meetings<br/>
+                    - Potential investments
                 </p>
               </div>
               <div className="col-sm-3 px-3">
               <p align="center">Q2:2022</p>
-                <p>- Large Influencer Support Marketing<br/>
-                    - Exchange Listings<br/>
-                    - First, donations are being made to selected communities affected by water, energy, sanitation, and flood<br/>
-                    - Token Burn<br/>
-                    - Launch NFTs<br/>
-                    - Launch P2E game<br/>
-                    - Development of NFT’s, Metaverse, P2E games, clean energy suppliers, generators etc.<br/>
-                    - Potential outcomes including launching of the above.
+                <p>
+                  - arge Influencer Support<br/>
+                  - Exchange Listings<br/>
+                  - First, donations<br/>
+                  - Airdrop Giveaway<br/>
+                  - Token Burn<br/>
+                  - Product Development<br/>
+                  - Product launching
                     </p>
               </div>
               <div className="col-sm-3 px-3">
               <p align="center">Q3:2023</p>
-                <p>- First Donation to a Charity Organization for Environmental Clean-up Celebrity Support Marketing<br/>
-                    - Website Re-Design, development, and Branding<br/>
-                    - Binance Exchange and other major exchange listings<br/>
-                    - Development of Television and Commercial Partnerships<br/>
-                    - Discussions With the television companies regarding a potential Sanenergy Games projects On Their Network<br/>
-                    - Official launching of Metaverse, NFTs, P2E games<br/>
-                    - Product Sale Contracts with Clean Energy Suppliers and Generators<br/>
-                    - The establishment of an online university</p>
+                <p>
+                  - Donation to Charity Organization<br/>
+                  - Celebrity Support Marketing<br/>
+                  - Website Re-Branding<br/>
+                  - Major exchange listings <br/> 
+                  - TV & Commercials partnership<br/>
+                  - Metaverse, NFTs, P2E games<br/>
+                  - Product Sale Contracts  <br/>
+                  - Online university
+                  </p>
               </div>
               <div className="col-sm-3 px-3">
               <p align="center">Q4:2023</p>
-                <p>- First fund raising towards the building of university in a selected country<br/>
-                    - Additional Sanenergy campaigns concerning wind, solar, and tidal power generators<br/>
-                    - TV and marketing Campaign in relation product sales and distribution<br/>
-                    - Furthermore, development partnerships with government, private, and non-governmental organizations in relation to the establishment of a university in a chosen country are being formed.</p>
+                <p>
+                  - University fund raising<br/>
+                  - Sanenergy campaigns   <br/>
+                  - Product sales & distribution campaign<br/>
+                  - Partnerships<br/>
+                </p>
               </div>
             </div>
           </div>
@@ -235,6 +369,7 @@ const Home = () => {
         </div>
         <img src="assets/games.png" alt="games" className='games-img' />
       </div>
+      <Footer />
     </React.Fragment>
   );
 }

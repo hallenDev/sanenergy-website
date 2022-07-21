@@ -26,8 +26,8 @@ const DAppHeader = () => {
     const chainId = await web3.eth.getChainId();
     // console.log({ chainId: chainId })
 
-    if (chainId !== 43114) {
-      toast.error("Please switch to AVAX network.");
+    if (chainId !== 97) {
+      toast.error("Please switch to bsc test network.");
       return;
     }
 

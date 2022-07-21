@@ -8,10 +8,7 @@ import './App.css';
 
 import Home from './pages/Home';
 import WhitePaper from './pages/WhitePaper';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import DApp from './pages/DApp';
-import DAppHeader from './components/DAppHeader';
 
 const App = () => {
   const [showButton, setShowButton] = useState(false);
@@ -33,45 +30,22 @@ const App = () => {
     });
   };
 
-  if (window.location.pathname === "/app") {
-    return (
-      <React.Fragment>
-        <div className="app">
-          <DAppHeader />
-          <Switch>
-            <Route exact path="/app" component={DApp} />
-            <Redirect from='/' to='/' />
-          </Switch>
-          <Footer />
-          {showButton && (
-            <div onClick={scrollToTop} className="back-to-top">
-              <BsFillArrowUpCircleFill className='cl-brown' />
-            </div>
-          )}
-          <ToastContainer theme='colored' />
-        </div>
-      </React.Fragment>
-    )
-  } else {
-    return (
-      <React.Fragment>
-        <div className="app">
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/whitepaper" component={WhitePaper} />
-            <Redirect from='/' to='/' />
-          </Switch>
-          <Footer />
-          {showButton && (
-            <div onClick={scrollToTop} className="back-to-top">
-              <BsFillArrowUpCircleFill className='cl-brown' />
-            </div>
-          )}
-        </div>
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <div className="app">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/app" component={DApp} />
+          <Redirect from='/' to='/' />
+        </Switch>
+        {showButton && (
+          <div onClick={scrollToTop} className="back-to-top">
+            <BsFillArrowUpCircleFill className='cl-brown' />
+          </div>
+        )}
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default (withRouter(App));
